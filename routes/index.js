@@ -7,8 +7,22 @@ const axios = require('axios');
 // App Routes
 module.exports = (app) => {
 
-    app.get("/api/books", (req, res) => {
-        console.log("hello");
+    app.get("/api/books/", (req, res) => {
+
+        // Pull Books
+        axios.get("https://www.googleapis.com/books/v1/volumes?q=batman")
+            .then(function(apiData) {
+
+                let result = apiData.data.items;
+                let listNames = [];
+                result.forEach((book) => {
+                    listNames.push(book.volumeInfo.title);
+                });
+                res.send(listNames);
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
     });
 
 
