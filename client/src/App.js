@@ -1,18 +1,29 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+// App Routing: Single Page
 
+// Get modules
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+// Get Components
+import Home from './pages/Home';
+import NavHeader from './pages/NavHeader';
+
+// Get CSS
+import './assets/css/reset.css';
+import './assets/css/style.css';
+
+// Main App compononet routing
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="app-wrapper">
+        <Router>
+        <NavHeader />
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </Router>
       </div>
     );
   }

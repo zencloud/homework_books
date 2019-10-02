@@ -13,10 +13,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-
-
 require('./routes')(app);
-
 
 app.listen(PORT, () => {
   console.log(`==> API server now on port ${PORT}!`);

@@ -3,14 +3,16 @@
 // Get the modules
 //const db = require('./models');
 const axios = require('axios');
-
+const path = require('path');
 // App Routes
 module.exports = (app) => {
 
-    app.get("/api/books/", (req, res) => {
 
-        // Pull Books
-        axios.get("https://www.googleapis.com/books/v1/volumes?q=batman")
+    // Get searched book
+    app.get("/api/books/:q", (req, res) => {
+
+        // Book Search
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.q}`)
             .then(function(apiData) {
 
                 let result = apiData.data.items;
@@ -18,13 +20,13 @@ module.exports = (app) => {
                 result.forEach((book) => {
                     listNames.push(book.volumeInfo.title);
                 });
-                res.send(listNames);
+
+                res.json(listNames);
             })
             .catch(function(error) {
                 console.log(error);
             })
     });
-
 
     // Send to react
     app.get("*", (req, res) => {

@@ -1,0 +1,55 @@
+/* Main App Styles */
+
+/* Font Import */
+@import url("https://use.typekit.net/mmd8ecg.css");
+
+/* Global */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'korolev-rounded', sans-serif;
+    font-weight: 500;
+    color: #282828; 
+}
+
+.app-wrapper {
+    width: 100%;
+    height: auto;
+}
+
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+    background-color: #54585d;
+}
+
+.nav-header-logo-container {
+    width: max-content;
+    margin-left: 10px;
+}
+
+.nav-header-navigation {
+    margin-right: 30px;
+    font-size: 21px;
+    font-weight: 300;
+    color: #ecf0f1;
+}
+
+.nav-header a:active,
+.nav-header a:visited,
+.nav-header a:link {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+.nav-header a:hover {
+    color: #00c5f7;
+}
+.nav-divider {
+    margin: 0 10px 0 10px;
+}
