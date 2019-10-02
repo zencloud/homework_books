@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import Siema from 'siema';
 
 
-class Featured extends Component {
+class Saved extends Component {
 
     state = {}
 
     slider_init = () => {
         new Siema({
-            selector: '.slider-controller',
+            selector: '.saved-controller',
             duration: 200,
             easing: 'ease-out',
             perPage: 6,
-            startIndex: 0,
-            loop: false
+            startIndex: 0
         });
     }
 
@@ -27,9 +26,8 @@ class Featured extends Component {
 
         return (
             <div className="slider-container">
-            <h2>Featured</h2>
-            <div className="slider-controller">
-                <div className="slide-card">Hi, I am a book!</div>
+            <h3>Saved</h3>
+            <div className="saved-controller">
                 <div className="slide-card">Hi, I am a book!</div>
                 <div className="slide-card">Hi, I am a book!</div>
                 <div className="slide-card">Hi, I am a book!</div>
@@ -52,4 +50,4 @@ class Featured extends Component {
     }
 }
 
-export default Featured;
+export default Saved;

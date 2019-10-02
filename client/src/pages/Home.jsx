@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Featured from './Featured';
+import Saved from './Saved';
 
 class Home extends Component {
 
@@ -10,7 +11,7 @@ class Home extends Component {
 
     // Load books
     handleBookSearch = () => {
-        fetch(`/api/books/batman`)
+        fetch(`/api/books/random`)
             .then((response) => response.json())
             .then(data => this.setState({ loadedBooks: data }));
     }
@@ -24,6 +25,7 @@ class Home extends Component {
         return (
             <div>
                 <Featured />
+                <Saved />
                 <p>Books:</p>
                 {
                     this.state.loadedBooks.map((item, key) =>
