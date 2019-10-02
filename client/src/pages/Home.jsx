@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Featured from './Featured';
 
 class Home extends Component {
 
@@ -9,7 +10,7 @@ class Home extends Component {
 
     // Load books
     handleBookSearch = () => {
-        fetch(`/api/books/`)
+        fetch(`/api/books/batman`)
             .then((response) => response.json())
             .then(data => this.setState({ loadedBooks: data }));
     }
@@ -22,6 +23,7 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <Featured />
                 <p>Books:</p>
                 {
                     this.state.loadedBooks.map((item, key) =>

@@ -14,7 +14,7 @@ class NavHeader extends Component {
 
                 {/* Logo */}
                 <div className="nav-header-logo-container">
-                    <img src={AppLogo} />
+                    <img alt="Opus Logo" src={AppLogo} />
                 </div>
 
                 {/* Top Site Navigation */}

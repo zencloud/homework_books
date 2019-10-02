@@ -53,3 +53,45 @@ html, body {
 .nav-divider {
     margin: 0 10px 0 10px;
 }
+
+h2 {
+    width: 300px;
+    border-radius: 100px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cfd9e5;
+    margin-bottom: -14px;
+}
+
+.slider-container {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.slider-controller {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 240px;
+    border-radius: 10px;
+    background-color: #cfd9e5;
+    padding: 14px 0px 0 0;
+}
+
+.slide-card {
+    width: 150px;
+    height: 210px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}
