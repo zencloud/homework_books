@@ -95,11 +95,36 @@ h3 {
     margin-bottom: -14px;
 }
 
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-slider {
+    font-weight: 400;
+    font-family: 'korolev-rounded', sans-serif;
+    color: #033535;
+    border: 0px;
+    width: 50px;
+    border-radius: 100px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #acebac;
+    margin-bottom: -14px;
+    float: left;
+    margin-left: 6px;
+    cursor: pointer;
+}
+
 .saved-controller {
     background-color: #dab7b7;
 }
 
 .slide-card {
+    position: relative;
     width: 150px;
     height: 210px;
     border-radius: 20px;
@@ -111,6 +136,19 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.slide-card-hover {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    bottom: 0px;
+    left: 55px;
+    transition: 0.3s;
+}
+
+.slide-card:hover .slide-card-hover {
+    opacity: 1;
 }
 
 .loading {
