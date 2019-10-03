@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Get Components
 import Home from './pages/Home';
+import Search from './pages/Search';
 import NavHeader from './pages/NavHeader';
 
 // Get CSS
@@ -22,6 +23,7 @@ class App extends Component {
         <NavHeader />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route path="/search" component={Search} />
           </Switch>
         </Router>
       </div>

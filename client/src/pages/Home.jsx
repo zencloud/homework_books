@@ -16,7 +16,7 @@ class Home extends Component {
         return (
             <div>
                 <Featured />
-                {/* <Saved /> */}
+                <Saved />
             </div>
         )
     }

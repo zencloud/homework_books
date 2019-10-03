@@ -3,15 +3,37 @@ import { ThreeDots } from 'svg-loaders-react';
 import Siema from 'siema';
 import HeartIcon from '../assets/imgs/heart_icon.png';
 
-
-
 class Featured extends Component {
 
     state = {
-        updated: false,
         loadedBooks: []
     }
 
+
+    // Save Books
+    handleSaveBook = (id) => {
+        let bookData = this.state.loadedBooks[id];
+        console.log(id);
+        let postData = {
+
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                title: bookData.title,
+                authors: bookData.authors,
+                imageLink: bookData.imageLink,
+                storeLink: bookData.storeLink,
+                description: bookData.description
+            })
+        }
+
+        fetch('/api/book/save', postData)
+
+            .then((response) => {
+                console.log(response);
+            });
+
+    }
     // Load books
     handleBookSearch = () => {
         fetch(`/api/books/random`)
@@ -42,9 +64,7 @@ class Featured extends Component {
                         <div key={key} className="slide-card">
                             <img src={item.imageLink} alt="Book" />
                             <div className="slide-card-hover">
-                                <a href="#">
-                                    <img src={HeartIcon} alt="Save Book" />
-                                </a>
+                                <img onClick={() => this.handleSaveBook(key)} src={HeartIcon} alt="Save Book" />
                             </div>
                         </div>
                     )
@@ -55,7 +75,7 @@ class Featured extends Component {
 
     // Initialize New slider when the component changes
     componentDidUpdate() {
-        const mySlider = new Siema({
+        new Siema({
             selector: '.slider-controller',
             duration: 200,
             easing: 'ease-out',
@@ -64,7 +84,6 @@ class Featured extends Component {
             loop: true
         });
     }
-
 
     handleNewSlider = () => {
         return (
