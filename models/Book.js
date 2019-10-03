@@ -26,7 +26,7 @@ let BookSchema = new Schema ({
 
     description: {
         type: String,
-        default: ""
+        default: "No description available."
     }
 
 });

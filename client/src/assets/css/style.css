@@ -11,7 +11,7 @@
 }
 
 html, body {
-    font-family: 'korolev-rounded', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     color: #282828;
 }
@@ -64,7 +64,7 @@ html, body {
     justify-items: center;
 }
 
-.slider-controller, .saved-controller {
+.slider-controller {
     margin: 0 auto;
     margin-top: 20px;
     width: 100%;
@@ -120,8 +120,71 @@ h3 {
     cursor: pointer;
 }
 
-.saved-controller {
+.saved-container {
     background-color: #dab7b7;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dfdfdf;
+    padding: 0 10px 0 10px;
+}
+
+.saved-card {
+    position: relative;
+    width: 310px;
+    height: 130px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #dfdfdf;
+    box-shadow: 0px 3px 1px -1px rgba(32, 32, 32, 0.2);
+    margin: 10px 0 3px 0;
+
+}
+
+.saved-card-info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+}
+
+.saved-card-book-title {
+    width: 100%;
+    height: auto;
+    color: rgb(0, 160, 8);
+}
+
+.saved-card-book-description {
+
+    padding-top: 5px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.saved-card-book-image-container {
+    width: 80px;
+    min-width: 80px;
+}
+
+.saved-card-book-image-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100px;
 }
 
 .slide-card {
@@ -174,11 +237,11 @@ h3 {
 
 .search-field {
     border: 1px solid #d3d3d3;
-    color: #282828;
+    color: #5a5a5a;
     width: 100%;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     padding: 7px 10px 7px 30px;
     border-radius: 100px;
     outline: none;
@@ -198,6 +261,7 @@ h3 {
     color: #999999;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     padding: 0 3px 0 3px;
 }
@@ -220,4 +284,11 @@ h3 {
 .search-recent-container ul li + li:before {
     content: " | ";
     color: #c2c2c2;
+}
+
+.fa-clock {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    margin-right: 1px;
 }
