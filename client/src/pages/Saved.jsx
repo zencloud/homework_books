@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import Siema from 'siema';
 
-
 class Saved extends Component {
 
     state = {}
 
     slider_init = () => {
-        new Siema({
+        const mySlider = new Siema({
             selector: '.saved-controller',
             duration: 200,
             easing: 'ease-out',
