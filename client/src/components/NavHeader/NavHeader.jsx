@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import AppLogo from '../assets/imgs/logo.png';
+import AppLogo from '../../assets/imgs/logo.png';
 
 class NavHeader extends Component {
 

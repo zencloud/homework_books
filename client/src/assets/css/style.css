@@ -55,16 +55,21 @@ html, body {
     margin: 0 10px 0 10px;
 }
 
-.slider-container {
+.page-container {
+    width: 960px;
+    margin: 0 auto;
+}
+    
+.featured-container {
     margin: 0 auto;
     margin-top: 20px;
-    width: 960px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-items: center;
 }
 
-.slider-controller {
+.featured-content {
     margin: 0 auto;
     margin-top: 20px;
     width: 100%;
@@ -72,37 +77,11 @@ html, body {
     border-radius: 10px;
     background-color: #cfd9e5;
     padding: 14px 0px 0 0;
-}
-
-h2 {
-    width: 300px;
-    border-radius: 100px;
-    padding: 5px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #cfd9e5;
-    margin-bottom: -14px;
+    overflow: hidden;
 }
 
-h3 {
-    width: 300px;
-    border-radius: 100px;
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #dab7b7;
-    margin-bottom: -14px;
-}
-
-.slider-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.btn-slider {
+.featured-container .btn-slider {
     font-weight: 400;
     font-family: 'korolev-rounded', sans-serif;
     color: #033535;
@@ -120,7 +99,44 @@ h3 {
     cursor: pointer;
 }
 
+.featured-container h2 {
+    width: 300px;
+    border-radius: 100px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cfd9e5;
+    margin-bottom: -14px;
+}
+
+.featured-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.saved-container h2 {
+    width: 300px;
+    border-radius: 100px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dab7b7;
+    margin-bottom: -14px;
+}
+
 .saved-container {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.saved-content {
     background-color: #dab7b7;
     margin: 0 auto;
     margin-top: 20px;
@@ -129,8 +145,6 @@ h3 {
     background-color: #ebebeb;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
     border: 1px solid #dfdfdf;
     padding: 0 10px 0 10px;
 }
@@ -144,11 +158,13 @@ h3 {
     padding: 10px;
     text-align: center;
     display: flex;
+    flex-grow: 1;
+    min-width: 25%;
     justify-content: flex-start;
     align-items: center;
     border: 1px solid #dfdfdf;
     box-shadow: 0px 3px 1px -1px rgba(32, 32, 32, 0.2);
-    margin: 10px 0 3px 0;
+    margin: 5px 10px 5px 10px;
 
 }
 

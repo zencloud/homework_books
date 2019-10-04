@@ -13,7 +13,7 @@ module.exports = (app) => {
 	app.post("/api/book/save", (req, res) => {
 		db.Book.create(req.body, function(error, info) {
 			if (error) { console.log( error ) }
-			res.end();
+			res.send();
 		});
 	});
 

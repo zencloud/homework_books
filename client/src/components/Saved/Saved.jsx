@@ -1,26 +1,13 @@
 import React, { Component } from 'react';
-import Siema from 'siema';
 import { ThreeDots } from 'svg-loaders-react';
 
 
 class Saved extends Component {
 
-    state = {
-        loadedBooks: []
-    }
-
     // Initial loading of books on page load
     componentDidMount() {
-        this.handleBookSearch();
+        this.props.handleBookGetSaved();
     }
-
-    // Fetch book data from API
-    handleBookSearch = () => {
-        fetch(`/api/books/saved`)
-            .then((response) => response.json())
-            .then(data => this.setState({ loadedBooks: data }));
-    }
-
 
     // Render Loading Icon
     render_loading = () => {
@@ -32,11 +19,11 @@ class Saved extends Component {
     }
 
     // Render Featured Books Slider
-    render_featured_books = () => {
+    render_saved_books = (props) => {
         return (
             <>
                 {
-                    this.state.loadedBooks.map((item, key) =>
+                    props.loadedSavedBooks.reverse().map((item, key) =>
                         <div key={key} className="saved-card">
                             <div className="saved-card-book-image-container">
                                 <img src={item.imageLink} alt="Book" />
@@ -59,15 +46,15 @@ class Saved extends Component {
     }
 
     // Determine which display to load
-    handleDisplaySaved = () => {
+    handleDisplaySaved = (props) => {
         return (
-            <div className="slider-container">
+            <div className="saved-container">
                 <div className="slider-header">
-                    <h3>Saved</h3>
+                    <h2>Saved</h2>
                 </div>
-                <div className="saved-container">
+                <div className="saved-content">
                     {
-                        this.state.loadedBooks.length > 0 ? this.render_featured_books() : this.render_loading()
+                        props.loadedSavedBooks.length > 0 ? this.render_saved_books(props) : this.render_loading()
                     }
                 </div>
             </div>
@@ -78,7 +65,7 @@ class Saved extends Component {
     // Render component
     render() {
         return (
-            this.handleDisplaySaved()
+            this.handleDisplaySaved(this.props)
         )
     }
 }
