@@ -48,6 +48,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.handleBookGetFeatured();
+        this.handleBookGetSaved();
     }
 
     // Render

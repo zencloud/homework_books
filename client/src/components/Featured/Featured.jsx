@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ThreeDots } from 'svg-loaders-react';
 import FeaturedCard from '../FeaturedCard/FeaturedCard';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Featured extends Component {
 
@@ -17,17 +18,26 @@ class Featured extends Component {
     render_featured_books = (props) => {
         return (
             <>
-                {
-                    props.loadedFeaturedBooks.map((item, key) =>
-                        <FeaturedCard
-                            title={item.title}
-                            cover={item.imageLink}
-                            id={key}
-                            key={key}
-                            handleBookSave={props.handleBookSave}
-                        />
-                    )
-                }
+                <ReactCSSTransitionGroup
+                    component={React.Fragment}
+                    transitionName="fade"
+                    transitionAppear={true}
+                    transitionAppearTimeout={500}
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={500}
+                >
+                    {
+                        props.loadedFeaturedBooks.map((item, key) =>
+                            <FeaturedCard
+                                title={item.title}
+                                cover={item.imageLink}
+                                id={key}
+                                key={key}
+                                handleBookSave={props.handleBookSave}
+                            />
+                        )
+                    }
+                </ReactCSSTransitionGroup>
             </>
         )
     }
