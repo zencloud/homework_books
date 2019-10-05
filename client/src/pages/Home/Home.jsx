@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Featured from '../../components/Featured/Featured';
 import Saved from '../../components/Saved/Saved';
+import ButterToast, {Cinnamon, POS_TOP, POS_BOTTOM, POS_LEFT, POS_RIGHT, POS_CENTER } from 'butter-toast';
+
 
 class Home extends Component {
 
@@ -9,6 +11,18 @@ class Home extends Component {
         loadedFeaturedBooks: [],
         loadedSavedBooks: []
     };
+
+
+    handleToast() {
+
+        ButterToast.raise({
+            content: <Cinnamon.Crunch
+                        scheme={Cinnamon.Slim.SCHEME_DARK}
+                        content={() => <div>Added book to your library.</div>}
+                        title="Success!"
+                        />
+        });
+    }
 
     // Save Books
     handleBookSave = (id) => {
@@ -27,6 +41,11 @@ class Home extends Component {
 
         fetch('/api/book/save', postData)
             .then((response) => {
+
+                // Success, render toast
+                this.handleToast()
+
+                // Update saved books
                 this.handleBookGetSaved();
             });
     }
@@ -53,6 +72,7 @@ class Home extends Component {
 
     // Render
     render() {
+
         return (
             <div className="page-container">
                 <Featured
@@ -63,6 +83,10 @@ class Home extends Component {
                     loadedSavedBooks={this.state.loadedSavedBooks}
                     handleBookGetSaved={this.handleBookGetSaved}
                 />
+            <ButterToast 
+                position={{vertical: POS_TOP, horizontal: POS_CENTER}}
+                style={{}}
+            />
             </div>
         )
     }

@@ -52,10 +52,10 @@ module.exports = (app) => {
 
 
 	// Get searched book
-	app.get("/api/book/:id", (req, res) => {
+	app.get("/api/book/search/:id", (req, res) => {
 
 		// Book Search
-		axios.get(`https://www.googleapis.com/books/v1/volumes?projection=lite&printType=books&maxResults=20&q=random`)
+		axios.get(`https://www.googleapis.com/books/v1/volumes?projection=lite&printType=books&maxResults=20&q=${req.params.id}`)
 			.then(function (apiData) {
 
 				let bookArray 	= []

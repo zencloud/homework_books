@@ -77,8 +77,6 @@ html, body {
     border-radius: 10px;
     background-color: #cfd9e5;
     padding: 14px 0px 0 0;
-    display: flex;
-    overflow: hidden;
 }
 
 .featured-container .btn-slider {
@@ -226,6 +224,10 @@ html, body {
     bottom: 0px;
     left: 55px;
     transition: 0.3s;
+}
+
+.slide-card-hover img:hover {
+    cursor: pointer;
 }
 
 .slide-card:hover .slide-card-hover {
