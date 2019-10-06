@@ -16,7 +16,8 @@ if (process.env.NODE_ENV === "production") {
 // Define API routes here
 require('./routes')(app);
 
-mongoose.connect("mongodb://localhost/opusdb", { useNewUrlParser: true });
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/opusdb"
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 app.listen(PORT, () => {
   console.log(`==> API server now on port ${PORT}!`);
