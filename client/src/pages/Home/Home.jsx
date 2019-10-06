@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Featured from '../../components/Featured/Featured';
 import Saved from '../../components/Saved/Saved';
-import ButterToast, {Cinnamon, POS_TOP, POS_BOTTOM, POS_LEFT, POS_RIGHT, POS_CENTER } from 'butter-toast';
+import ButterToast, {Cinnamon, POS_TOP, POS_CENTER } from 'butter-toast';
 
 
 class Home extends Component {

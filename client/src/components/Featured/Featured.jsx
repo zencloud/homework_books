@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ThreeDots } from 'svg-loaders-react';
 import FeaturedCard from '../FeaturedCard/FeaturedCard';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+//import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -9,7 +9,6 @@ import "react-multi-carousel/lib/styles.css";
 
 
 class Featured extends Component {
-
 
 
     // Render Loading Icon
