@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import FeaturedCard from '../../components/FeaturedCard/FeaturedCard';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Saved from '../../components/Saved/Saved';
+import ButterToast, {Cinnamon, POS_TOP, POS_CENTER } from 'butter-toast';
+
 
 class Search extends Component {
 
     state = {
         loadedSearchBooks: [],
-        searchInput: ""
+        searchInput: "",
+        lastSearch: ""
     }
 
+    handleToast() {
+
+        ButterToast.raise({
+            content: <Cinnamon.Crunch
+                        scheme={Cinnamon.Slim.SCHEME_DARK}
+                        content={() => <div>Added book to your library.</div>}
+                        title="Success!"
+                        />
+        });
+    }
 
     // Grab Featured Books
     handleSearchBooks = (bookSearch) => {
@@ -27,12 +41,15 @@ class Search extends Component {
 
         if (event.key === 'Enter') {
             this.handleSearchBooks(this.state.searchInput);
+            this.setState({
+                lastSearch: this.state.searchInput
+            })
         }
     }
 
     // Save Books
     handleBookSave = (id) => {
-        let bookData = this.state.loadedSearchedBooks[id];
+        let bookData = this.state.loadedSearchBooks[id];
         let postData = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -47,8 +64,7 @@ class Search extends Component {
 
         fetch('/api/book/save', postData)
             .then((response) => {
-                // Update saved books
-                //this.handleBookGetSaved();
+                this.handleToast();
             });
     }
 
@@ -56,6 +72,10 @@ class Search extends Component {
     render() {
         return (
             <>
+                <ButterToast
+                    position={{ vertical: POS_TOP, horizontal: POS_CENTER }}
+                    style={{}}
+                />
                 <div className="search-container">
                     <input
                         value={this.state.searchInput}
@@ -65,46 +85,51 @@ class Search extends Component {
                         className="search-field" />
 
                     <div className="search-recent-container">
-                        <p><i className="far fa-clock" /></p>
+                        {this.state.lastSearch.length > 0 ?
+                            <p><i className="far fa-clock" /></p> : ""}
                         <ul>
-                            <li>Batman</li>
-                            <li>Ice Cream</li>
-                            <li>War and Peace</li>
+                            <li>{this.state.lastSearch}</li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="saved-content">
-                    {
-                        this.state.loadedSearchBooks.length > 0 ?
-                            this.state.loadedSearchBooks.map((item, key) =>
+                <div className="search-results-container">
+                    <div className="saved-content">
+                        {
+                            this.state.loadedSearchBooks.length > 0 ?
+                                this.state.loadedSearchBooks.map((item, key) =>
 
-                                <ReactCSSTransitionGroup
-                                    component={React.Fragment}
-                                    transitionName="fade"
-                                    transitionAppear={true}
-                                    transitionAppearTimeout={500}
-                                    transitionEnterTimeout={500}
-                                    transitionLeaveTimeout={500}
-                                >
-                                    <div key={key} className="saved-card">
-                                        <div className="saved-card-book-image-container">
-                                            <img src={item.imageLink} alt="Book" />
+                                    <ReactCSSTransitionGroup
+                                        component={React.Fragment}
+                                        transitionName="fade"
+                                        transitionAppear={true}
+                                        transitionAppearTimeout={500}
+                                        transitionEnterTimeout={500}
+                                        transitionLeaveTimeout={500}
+                                    >
+                                        <div key={key} className="saved-card">
+                                            <div className="saved-card-book-image-container">
+                                                <img src={item.imageLink} alt="Book" />
+                                            </div>
+                                            <div className="saved-card-info">
+                                                <i className="saved-card-book-title">{item.title}</i>
+                                                <i className="saved-card-book-description">
+                                                    {
+                                                        item.description.length > 90 ?
+                                                            item.description.substring(0, 90) + "..." :
+                                                            item.description
+                                                    }
+                                                </i>
+                                                <button
+                                                    className="btn-save"
+                                                    onClick={() => this.handleBookSave(key)}
+                                                >Save</button>
+                                            </div>
                                         </div>
-                                        <div className="saved-card-info">
-                                            <i className="saved-card-book-title">{item.title}</i>
-                                            <i className="saved-card-book-description">
-                                                {
-                                                    item.description.length > 90 ?
-                                                        item.description.substring(0, 90) + "..." :
-                                                        item.description
-                                                }
-                                            </i>
-                                        </div>
-                                    </div>
-                                </ReactCSSTransitionGroup>
-                            ) : <p>No search results</p>
-                    }
+                                    </ReactCSSTransitionGroup>
+                                ) : <p>Awaiting search results...</p>
+                        }
+                    </div>
                 </div>
             </>
         )

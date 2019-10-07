@@ -79,21 +79,21 @@ html, body {
     padding: 14px 0px 0 0;
 }
 
-.featured-container .btn-slider {
+ .btn-save {
     font-weight: 400;
-    font-family: 'korolev-rounded', sans-serif;
-    color: #033535;
+    font-family: 'Roboto', sans-serif;
+    color: #e4f0f0;
     border: 0px;
-    width: 50px;
+    width: max-content;
     border-radius: 100px;
-    padding: 5px;
+    padding: 5px 12px 5px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #acebac;
+    background-color: #09aa4c;
     margin-bottom: -14px;
     float: left;
-    margin-left: 6px;
+    margin: 10px 0 10px 0;
     cursor: pointer;
 }
 
@@ -303,6 +303,11 @@ html, body {
 .search-recent-container ul li + li:before {
     content: " | ";
     color: #c2c2c2;
+}
+
+.search-results-container {
+    margin: 0 auto;
+    width: 90%;
 }
 
 .fa-clock {

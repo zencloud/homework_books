@@ -55,7 +55,7 @@ module.exports = (app) => {
 	app.get("/api/book/search/:id", (req, res) => {
 
 		// Book Search
-		axios.get(`https://www.googleapis.com/books/v1/volumes?projection=lite&printType=books&maxResults=20&q=${req.params.id}`)
+		axios.get(`https://www.googleapis.com/books/v1/volumes?&printType=books&maxResults=20&q=${req.params.id}`)
 			.then(function (apiData) {
 
 				let bookArray 	= []
@@ -65,8 +65,12 @@ module.exports = (app) => {
 					let bookInfo 	= {}
 					bookInfo.title 			= book.volumeInfo.title;
 					bookInfo.authors 		= book.volumeInfo.authors;
-					bookInfo.description	= book.volumeInfo.description;
-					bookInfo.imageLink		= book.volumeInfo.imageLinks.thumbnail;
+					bookInfo.description	= book.volumeInfo.description || "No Description"
+					if (book.volumeInfo.imageLinks) {
+						bookInfo.imageLink		= book.volumeInfo.imageLinks.thumbnail || "./assets/imgs/heart-icons.png";
+					} else {
+						bookInfo.imageLink = "./imgs/missing_book.png";
+					}
 					bookInfo.storeLink		= book.volumeInfo.infoLink;
 					bookArray.push(bookInfo);
 				});
